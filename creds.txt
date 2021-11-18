@@ -1,1 +1,1 @@
-NIM PIC/PASSWORD
+nim pic/password

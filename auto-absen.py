@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 r = requests.Session()
 
 
-creds = open("creds.txt","r").read().split()
+creds = open("creds.txt","r").read().split('\n')
 
 baseurl = "https://infokhs.umm.ac.id/"
 page = {
@@ -13,10 +13,12 @@ page = {
 }
 
 def login(creds):
-    usr = creds[0]
-    pwd = creds[1]
-    home=r.post(url=baseurl+page["login"],data={"username": creds[0], "password": creds[1]})
-    presensi()
+    for x in range(len(creds)):
+        cred = creds[x].split()
+        usr = cred[0]
+        pwd = cred[1]
+        home=r.post(url=baseurl+page["login"],data={"username": cred[0], "password": cred[1]})
+        presensi()
 
 
 def presensi():
